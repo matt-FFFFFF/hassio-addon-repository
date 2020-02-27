@@ -1,6 +1,6 @@
 {
     "name": "PostgreSQL",
-    "version": "12",
+    "version": "12.0.0.1",
     "slug": "postgres",
     "description": "PostgreSQL an object-relational database management system (ORDBMS) with an emphasis on extensibility and standards-compliance.",
     "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
@@ -9,14 +9,14 @@
     "ports": {
         "5432/tcp": null
     },
-    "ports-description": {
+    "ports_description": {
         "5432/tcp": "PostgreSQL database port, expose this if you need to access outside of Home Assistant"
     },
     "options": {
         "user": "dbuser",
         "password": "password",
         "database": "databasename",
-        "initdb-args": null
+        "initdb-args": ""
     },
     "schema": {
         "user": "str",
@@ -24,5 +24,6 @@
         "database": "str",
         "initdb-args": "str"
     },
+    "url": "https://github.com/matt-FFFFFF/hassio-addon-postgres",
     "image": "mattffffff/hassio-addon-postgres-{arch}"
   }
