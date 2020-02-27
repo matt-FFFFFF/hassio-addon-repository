@@ -13,7 +13,7 @@
         "5432/tcp": "PostgreSQL database port, expose this if you need to access outside of Home Assistant"
     },
     "options": {
-        "user": "dbuser",
+        "user": "username",
         "password": "password",
         "database": "databasename",
         "initdb-args": ""
