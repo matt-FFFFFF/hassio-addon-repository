@@ -2,8 +2,15 @@ name: postgres
 
 on:
   push:
-    paths: postgres/*
-    branches: master
+    branches:
+      - master
+    paths:
+      - 'postgres/**'
+    paths-ignore: 
+      - '**.md'
+      - 'postgres/LICENSE'
+      - 'postgres/.github/**'
+
 
 jobs:
   build:
