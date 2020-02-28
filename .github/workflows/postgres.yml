@@ -19,10 +19,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Create options.json
       run: |
-        pwd
-        ls -l
-        cd hassio-addon-repository/postgres
-        jq .options config.json >options.json
+        jq .options postgres/config.json >postgres/options.json
     - name: Build all
       run: |
         docker run \
