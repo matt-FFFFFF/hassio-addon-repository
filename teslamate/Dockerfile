@@ -40,12 +40,9 @@ WORKDIR $HOME
 RUN chown -R nobody: .
 USER nobody
 
-COPY --chown=nobody entrypoint.sh /
-COPY --chown=nobody ha-bootstrap.sh /
+COPY --chown=nobody entrypoint.sh ha-bootstrap.sh /
 COPY --from=builder --chown=nobody /opt/built .
 RUN mkdir .srtm_cache
-
-EXPOSE 8099
 
 ENTRYPOINT ["/ha-bootstrap.sh"]
 CMD ["bin/teslamate", "start"]

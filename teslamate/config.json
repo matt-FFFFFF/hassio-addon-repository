@@ -1,16 +1,18 @@
 {
     "name": "TeslaMate",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "slug": "teslamate",
     "description": "A self-hosted data logger for your Tesla.",
     "arch": ["amd64"],
     "startup": "application",
     "boot": "auto",
+    "webui": "http://[HOST]:[PORT:4000]",
+    "host_network": true,
     "ports": {
-        "8099/tcp": null
+        "4000/tcp": null
     },
     "ports_description": {
-        "8099/tcp": "Web interface. Disable this to use Home Assistant ingress."
+        "4000/tcp": "Web interface. Disable this to use Home Assistant ingress."
     },
     "options": {
         "database_user": "user",
@@ -26,7 +28,8 @@
         "mqtt_tls": true,
         "mqtt_tls_accept_invalid_certs": false,
         "mqtt_namespace": "account_0",
-        "timezone": "Europe/London"
+        "timezone": "Europe/London",
+        "port": 4000
     },
     "schema": {
         "database_user": "str",
@@ -42,11 +45,9 @@
         "mqtt_tls": "bool",
         "mqtt_tls_accept_invalid_certs": "bool",
         "mqtt_namespace": "str",
-        "timezone": "str"
+        "timezone": "str",
+        "port": "int"
     },
     "url": "https://github.com/matt-FFFFFF/hassio-addon-repository/blob/master/teslamate/README.md",
-    "image": "mattffffff/teslamate-{arch}",
-    "ingress": true,
-    "ingress_port": 8099,
-    "ingress_entry": "/sign_in"
+    "image": "mattffffff/teslamate-{arch}"
   }
