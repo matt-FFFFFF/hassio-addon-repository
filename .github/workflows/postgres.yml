@@ -26,6 +26,6 @@ jobs:
               --rm \
               --privileged \
               -v ~/.docker:/root/.docker \
-              -v $(pwd)/hassio-addon-repository/postgres:/data homeassistant/amd64-builder \
+              -v $(pwd)/postgres:/data homeassistant/amd64-builder \
               --all \
               --target /data
