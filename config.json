@@ -23,5 +23,5 @@
         "database": "str"
     },
     "url": "https://github.com/matt-FFFFFF/hassio-addon-postgres",
-    "image": "mattffffff/hassio-addon-postgres-{arch}"
+    "image": "mattffffff/postgres-{arch}"
   }
