@@ -1,4 +1,4 @@
-name: postgres
+name: teslamate
 
 on:
   push:
@@ -30,6 +30,6 @@ jobs:
               --privileged \
               -v /run/docker.sock:/run/docker.sock:rw \
               -v ~/.docker:/root/.docker \
-              -v $(pwd)/postgres:/data homeassistant/amd64-builder \
+              -v $(pwd)/teslamate:/data homeassistant/amd64-builder \
               --${{ matrix.arch }} \
               --target /data

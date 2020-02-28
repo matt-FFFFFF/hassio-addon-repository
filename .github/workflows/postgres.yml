@@ -7,7 +7,6 @@ on:
     paths:
       - 'postgres/**'
       - '!**.md'
-      - '!postgres/LICENSE'
       - '.github/workflows/postgres.yml'
 
 jobs:
