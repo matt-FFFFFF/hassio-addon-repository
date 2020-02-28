@@ -17,9 +17,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Create options.json
-      run: |
-        jq .options postgres/config.json >postgres/options.json
+    - name: Login to docker hub
+      uses: actions-hub/docker/login@master
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
     - name: Build all
       run: |
         docker run \
