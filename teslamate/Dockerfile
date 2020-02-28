@@ -47,5 +47,5 @@ RUN mkdir .srtm_cache
 
 EXPOSE 8099
 
-ENTRYPOINT ["/bin/sh", "/ha-bootstrap.sh"]
+ENTRYPOINT ["/ha-bootstrap.sh"]
 CMD ["bin/teslamate", "start"]

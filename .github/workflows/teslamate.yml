@@ -1,0 +1,35 @@
+name: postgres
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'teslamate/**'
+      - '!**.md'
+      - '.github/workflows/teslamate.yml'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        arch: [amd64]
+      fail-fast: true
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Login to docker hub
+      run: sudo docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+    - name: Create docker image
+      run: |
+        sudo docker run \
+              --rm \
+              --privileged \
+              -v /run/docker.sock:/run/docker.sock:rw \
+              -v ~/.docker:/root/.docker \
+              -v $(pwd)/postgres:/data homeassistant/amd64-builder \
+              --${{ matrix.arch }} \
+              --target /data

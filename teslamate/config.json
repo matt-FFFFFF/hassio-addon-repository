@@ -1,6 +1,6 @@
 {
     "name": "TeslaMate",
-    "version": "1.17.1",
+    "version": "0.0.1",
     "slug": "teslamate",
     "description": "A self-hosted data logger for your Tesla.",
     "arch": ["amd64"],
@@ -15,7 +15,8 @@
     "options": {
         "database_user": "user",
         "database_pass": "pass",
-        "database_name": "abcd-postgres",
+        "database_name": "dbname",
+        "database_host": "abcdefgh-postgres",
         "database_ssl": false,
         "database_port": 5432,
         "disable_mqtt": false,
@@ -24,7 +25,7 @@
         "mqtt_pass": "pass",
         "mqtt_tls": true,
         "mqtt_tls_accept_invalid_certs": false,
-        "mqtt_namespace": "str",
+        "mqtt_namespace": "account_0",
         "timezone": "Europe/London"
     },
     "schema": {
