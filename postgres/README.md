@@ -6,8 +6,7 @@ PostgreSQL is a powerful, open source object-relational database system with ove
 
 This addon uses version 12.2 of PostgreSQL.
 It is based on the official Docker Hub build on [Github](https://github.com/docker-library/postgres/tree/master/12/alpine).
-
-This image uses the Home Assistant base image, rather than the native Alpine image used in teh official image.
+This image uses the Home Assistant base image, rather than the native Alpine image used in the official image.
 
 ## Configuration
 
