@@ -1,6 +1,6 @@
 {
     "name": "TeslaMate",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "slug": "teslamate",
     "description": "A self-hosted data logger for your Tesla.",
     "arch": ["amd64"],
@@ -32,8 +32,9 @@
         "database_user": "str",
         "database_pass": "str",
         "database_name": "str",
-        "database_port": "int",
+        "database_host": "str",
         "database_ssl": "bool",
+        "database_port": "int",
         "disable_mqtt": "bool",
         "mqtt_host": "str",
         "mqtt_user": "str",
@@ -43,7 +44,7 @@
         "mqtt_namespace": "str",
         "timezone": "str"
     },
-    "url": "https://github.com/matt-FFFFFF/hassio-addon-repository",
+    "url": "https://github.com/matt-FFFFFF/hassio-addon-repository/blob/master/teslamate/README.md",
     "image": "mattffffff/teslamate-{arch}",
     "ingress": true,
     "ingress_port": 8099

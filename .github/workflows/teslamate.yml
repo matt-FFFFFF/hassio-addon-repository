@@ -30,6 +30,6 @@ jobs:
               --privileged \
               -v /run/docker.sock:/run/docker.sock:rw \
               -v ~/.docker:/root/.docker \
-              -v $(pwd)/teslamate:/data homeassistant/amd64-builder \
+              -v $(pwd)/$GITHUB_WORKFLOW:/data homeassistant/amd64-builder \
               --${{ matrix.arch }} \
               --target /data

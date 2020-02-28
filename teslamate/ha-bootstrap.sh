@@ -17,7 +17,7 @@ export MQTT_TLS_ACCEPT_INVALID_CERTS=$(bashio::config 'mqtt_tls_accept_invalid_c
 export MQTT_NAMESPACE=export MQTT_TLS=$(bashio::config 'mqtt_namespace')
 
 # Other things
-export TZ=(bashio::config 'timezone')
+export TZ=$(bashio::config 'timezone')
 export PORT=8099
 
 $(/usr/bin/env sh) /entrypoint.sh "$@"
