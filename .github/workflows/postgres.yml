@@ -15,11 +15,16 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        arch: [armhf, armv7, aarch64, amd64, i386]
+      fail-fast: true
+
     steps:
     - uses: actions/checkout@v2
     - name: Login to docker hub
       run: sudo docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-    - name: Build all
+    - name: Create docker image
       run: |
         sudo docker run \
               --rm \
@@ -27,5 +32,5 @@ jobs:
               -v /run/docker.sock:/run/docker.sock:rw \
               -v ~/.docker:/root/.docker \
               -v $(pwd)/postgres:/data homeassistant/amd64-builder \
-              --all \
+              --${{ matrix.arch }} \
               --target /data
