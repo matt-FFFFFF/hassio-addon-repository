@@ -18,15 +18,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Login to docker hub
-      uses: actions-hub/docker/login@master
-      env:
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      run: sudo docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
     - name: Build all
       run: |
-        docker run \
+        sudo docker run \
               --rm \
               --privileged \
+              -v /run/docker.sock:/run/docker.sock:rw \
               -v ~/.docker:/root/.docker \
               -v $(pwd)/postgres:/data homeassistant/amd64-builder \
               --all \
