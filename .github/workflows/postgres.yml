@@ -17,14 +17,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Directories
-      run: pwd
     - name: Build all
       run: |
         docker run \
               --rm \
               --privileged \
               -v ~/.docker:/root/.docker \
-              -v $(pwd)/postgres:/data homeassistant/amd64-builder \
+              -v $(pwd)/hassio-addon-repository/postgres:/data homeassistant/amd64-builder \
               --all \
               --target /data
