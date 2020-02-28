@@ -47,5 +47,6 @@
     "url": "https://github.com/matt-FFFFFF/hassio-addon-repository/blob/master/teslamate/README.md",
     "image": "mattffffff/teslamate-{arch}",
     "ingress": true,
-    "ingress_port": 8099
+    "ingress_port": 8099,
+    "ingress_entry": "/sign_in"
   }
