@@ -21,4 +21,4 @@ database: mydbname
 
 ## Connecting to the DB
 
-To connect your application to the database, specify the server name as: {slug}-postgres.
+To connect your application to the database, specify the server name as: {slug}-postgres. The port number is the default of 5432.
