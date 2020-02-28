@@ -6,10 +6,9 @@ on:
       - master
     paths:
       - 'postgres/**'
-    paths-ignore: 
-      - '**.md'
-      - 'postgres/LICENSE'
-      - 'postgres/.github/**'
+      - '!**.md'
+      - '!postgres/LICENSE'
+      - '!postgres/.github/**'
 
 
 jobs:
