@@ -1,3 +1,11 @@
 # Home Assistant PostgreSQL addon
 
-more soon
+## Configuration
+
+Set the database name, username and password  in the yaml editor:
+
+```yml
+username: mydbuser
+password: mysecretpassword
+database: mydbname
+```

@@ -150,8 +150,8 @@ RUN mkdir -p "$PGDATA" && chown -R postgres:postgres "$PGDATA" && chmod 777 "$PG
 #VOLUME /var/lib/postgresql/data
 
 COPY docker-entrypoint.sh /usr/local/bin/
-COPY setoptions.sh /usr/local/bin/
-ENTRYPOINT ["setoptions.sh"]
+COPY ha-bootstrap.sh /usr/local/bin/
+ENTRYPOINT ["ha-bootstrap.sh"]
 
 EXPOSE 5432
 CMD ["postgres"]
