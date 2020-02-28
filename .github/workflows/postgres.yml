@@ -19,6 +19,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: Create options.json
       run: |
+        pwd
+        ls -l
         cd hassio-addon-repository/postgres
         jq .options config.json >options.json
     - name: Build all
