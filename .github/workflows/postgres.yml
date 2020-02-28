@@ -1,0 +1,23 @@
+name: postgres
+
+on:
+  push:
+    paths: postgres/*
+    branches: master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build all
+      run: |
+        docker run \
+              --rm \
+              --privileged \
+              -v ~/.docker:/root/.docker \
+              -v $(pwd)/postgres:/data homeassistant/amd64-builder \
+              --all \
+              --target /data
