@@ -2,6 +2,8 @@
 
 Some of my addons for Home Assistant.
 
+* [Postgres](postgres)
+
 ## CI/CD
 
 I use GitHub Actions for CI/CD, see the [workflows](.github/workflows) directory.
