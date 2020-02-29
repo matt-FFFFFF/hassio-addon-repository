@@ -1,18 +1,18 @@
 {
     "name": "TeslaMate",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "slug": "teslamate",
     "description": "A self-hosted data logger for your Tesla.",
     "arch": ["amd64"],
     "startup": "application",
     "boot": "auto",
+    "ingress": true,
     "webui": "http://[HOST]:[PORT:4000]",
-    "host_network": true,
     "ports": {
         "4000/tcp": null
     },
     "ports_description": {
-        "4000/tcp": "Web interface. Disable this to use Home Assistant ingress."
+        "4000/tcp": "Web interface. INSECURE - Disable this when not in use."
     },
     "options": {
         "database_user": "user",
