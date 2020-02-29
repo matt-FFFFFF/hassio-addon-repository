@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.0.2
+
+* Increase kill timeout to 60 seconds
+
 ## v0.0.1
 
 * Initial version of the addon
