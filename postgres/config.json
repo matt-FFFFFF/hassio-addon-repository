@@ -1,6 +1,6 @@
 {
     "name": "PostgreSQL",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "slug": "postgres",
     "description": "PostgreSQL an object-relational database management system (ORDBMS) with an emphasis on extensibility and standards-compliance.",
     "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
