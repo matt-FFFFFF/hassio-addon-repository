@@ -20,4 +20,4 @@ export MQTT_NAMESPACE=export MQTT_TLS=$(bashio::config 'mqtt_namespace')
 export TZ=$(bashio::config 'timezone')
 export PORT=$(bashio::config 'port')
 
-$(/usr/bin/env sh) /entrypoint.sh "$@"
+exec $(/usr/bin/env sh) /entrypoint.sh "$@"

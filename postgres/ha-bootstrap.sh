@@ -5,4 +5,4 @@ export POSTGRES_PASSWORD=$(bashio::config 'password')
 export POSTGRES_DB=$(bashio::config 'database')
 export PGDATA="/data/postgres"
 
-/usr/local/bin/docker-entrypoint.sh $1
+exec /usr/local/bin/docker-entrypoint.sh "$@"
