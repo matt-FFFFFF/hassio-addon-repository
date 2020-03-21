@@ -38,7 +38,7 @@ WORKDIR $HOME
 RUN chown -R nobody: .
 USER nobody
 
-COPY --chown=nobody teslamate-source/entrypoint.sh teslamate-source/ha-bootstrap.sh /
+COPY --chown=nobody teslamate-source/entrypoint.sh ha-bootstrap.sh /
 COPY --from=builder --chown=nobody /opt/built .
 RUN mkdir .srtm_cache
 

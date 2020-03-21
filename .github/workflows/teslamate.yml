@@ -25,7 +25,8 @@ jobs:
     - uses: actions/checkout@v2
       with:
         submodules: 'true'
-    - run: |
+    - name: Checkout Teslamate
+      run: |
         cd $GITHUB_WORKSPACE/teslamate/teslamate-source
         git checkout $TESLAMATE_TAG
         cd $GITHUB_WORKSPACE
