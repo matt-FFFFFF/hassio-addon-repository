@@ -9,16 +9,16 @@ ENV MIX_ENV=prod
 
 WORKDIR /opt/app
 
-COPY mix.exs mix.lock ./
+COPY teslamate-source/mix.exs teslamate-source/mix.lock ./
 RUN mix "do" deps.get --only $MIX_ENV, deps.compile
 
-COPY assets assets
+COPY teslamate-source/assets assets
 RUN npm ci --prefix ./assets && npm run deploy --prefix ./assets
 
-COPY config config
-COPY lib lib
-COPY priv priv
-COPY grafana/dashboards grafana/dashboards
+COPY teslamate-source/config config
+COPY teslamate-source/lib lib
+COPY teslamate-source/priv priv
+COPY teslamate-source/grafana/dashboards grafana/dashboards
 
 RUN mix "do" phx.digest, compile
 
@@ -27,8 +27,6 @@ RUN mkdir -p /opt/built && mix release --path /opt/built
 ########################################################################
 
 FROM $BUILD_FROM as app
-
-##FROM alpine:3.11 AS app
 
 ENV LANG=C.UTF-8 \
     SRTM_CACHE=/opt/app/.srtm_cache \
@@ -40,7 +38,7 @@ WORKDIR $HOME
 RUN chown -R nobody: .
 USER nobody
 
-COPY --chown=nobody entrypoint.sh ha-bootstrap.sh /
+COPY --chown=nobody teslamate-source/entrypoint.sh teslamate-source/ha-bootstrap.sh /
 COPY --from=builder --chown=nobody /opt/built .
 RUN mkdir .srtm_cache
 

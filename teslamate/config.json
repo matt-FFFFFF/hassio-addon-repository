@@ -1,9 +1,9 @@
 {
     "name": "TeslaMate",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "slug": "teslamate",
     "description": "A self-hosted data logger for your Tesla.",
-    "arch": ["amd64"],
+    "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
     "startup": "application",
     "boot": "auto",
     "ingress": true,
@@ -12,7 +12,7 @@
         "4000/tcp": null
     },
     "ports_description": {
-        "4000/tcp": "Web interface. INSECURE - Disable this when not in use."
+        "4000/tcp": "Insecure web interface - disable when not in use"
     },
     "options": {
         "database_user": "user",
