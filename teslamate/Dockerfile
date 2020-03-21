@@ -42,5 +42,7 @@ COPY --chown=nobody teslamate-source/entrypoint.sh ha-bootstrap.sh /
 COPY --from=builder --chown=nobody /opt/built .
 RUN mkdir .srtm_cache
 
+RUN chmod a+x /*.sh
+
 ENTRYPOINT ["/ha-bootstrap.sh"]
 CMD ["bin/teslamate", "start"]
