@@ -26,9 +26,9 @@ jobs:
       with:
         submodules: 'true'
     - run: |
-        cd teslamate-source
+        cd $GITHUB_WORKSPACE/teslamate/teslamate-source
         git checkout $TESLAMATE_TAG
-        cd ..
+        cd $GITHUB_WORKSPACE
     - name: Login to docker hub
       run: sudo docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
     - name: Create docker image
