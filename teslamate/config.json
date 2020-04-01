@@ -18,7 +18,7 @@
         "database_user": "user",
         "database_pass": "pass",
         "database_name": "dbname",
-        "database_host": "abcdefgh-postgres",
+        "database_host": "29b65938-postgres",
         "database_ssl": false,
         "database_port": 5432,
         "disable_mqtt": false,
