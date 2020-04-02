@@ -12,7 +12,7 @@ on:
 jobs:
   build:
     env:
-      TESLAMATE_TAG: v1.18.0
+      TESLAMATE_TAG: v1.18.2
 
     runs-on: ubuntu-latest
 
@@ -27,6 +27,9 @@ jobs:
         submodules: 'true'
     - name: Checkout Teslamate
       run: |
+        cd $GITHUB_WORKSPACE
+        git submodule init
+        git submodule update
         cd $GITHUB_WORKSPACE/teslamate/teslamate-source
         git checkout $TESLAMATE_TAG
         cd $GITHUB_WORKSPACE

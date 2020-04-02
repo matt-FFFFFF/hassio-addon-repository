@@ -2,6 +2,10 @@
 
 This addon builds on the excellent work of [Adrian Kumpf](https://github.com/adriankumpf/teslamate). See his repo for information regarding the TeslaMate application.
 
+## DB Connection
+
+If using the Postgres addon from this repo, the database host is ```29b65938-postgres```
+
 ## No Ingress Support
 
 TeslaMate does not currently support a base path, so it expects all requests to be generated from the URL root ```/```.
@@ -12,7 +16,9 @@ I recommend you only do this to configure TeslaMate and you then remove the exte
 
 ## Uploading Grafana Dashboards
 
-This must be done manually for now. You must use a Linux terminal and have ```curl``` available.
+*I recommend you use the existing Grafana addon from the community addons*
+
+This must be done manually for now. You must use a bash terminal and have ```curl``` available.
 
 - Use the Grafana addon from the community repository.
 
