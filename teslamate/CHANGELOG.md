@@ -1,14 +1,8 @@
 # Changelog
 
-## 0.0.6
+## 0.0.7
 
-* Teslamate 1.18.2
+* Disable Web UI link
+* Disable ingress support
 
-## 0.0.5
-
-* Teslamate 1.18.0
-
-## 0.0.4
-
-* Initial published version
-* Teslamate version 1.17.0
+[Full Changelog](https://github.com/matt-FFFFFF/hassio-addon-repository/blob/master/teslamate/CHANGELOG.md)

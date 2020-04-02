@@ -1,13 +1,12 @@
 {
     "name": "TeslaMate",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "slug": "teslamate",
     "description": "A self-hosted data logger for your Tesla.",
     "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
     "startup": "application",
     "boot": "auto",
-    "ingress": true,
-    "webui": "http://[HOST]:[PORT:4000]",
+    "ingress": false,
     "ports": {
         "4000/tcp": null
     },
