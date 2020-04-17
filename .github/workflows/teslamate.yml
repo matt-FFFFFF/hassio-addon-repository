@@ -52,9 +52,9 @@ jobs:
         esac
     - name: Set environment variables from config.json
       run: |
-        echo '::set-env name=ADDON_VERSION::"$(jq -r .version < $GITHUB_WORKFLOW/config.json)"'
-        echo '::set-env name=ADDON_NAME::"$(jq -r .name < $GITHUB_WORKFLOW/config.json)"'
-        echo '::set-env name=ADDON_DESCRIPTION::"$(jq -r .description < $GITHUB_WORKFLOW/config.json)"'
+        echo ::set-env name=ADDON_VERSION::"$(jq -r .version < $GITHUB_WORKFLOW/config.json)"
+        echo ::set-env name=ADDON_NAME::"$(jq -r .name < $GITHUB_WORKFLOW/config.json)"
+        echo ::set-env name=ADDON_DESCRIPTION::"$(jq -r .description < $GITHUB_WORKFLOW/config.json)"
     - name: Login to docker hub
       run: sudo docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
     - name: Docker pull
