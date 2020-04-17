@@ -58,7 +58,7 @@ jobs:
     - name: Login to docker hub
       run: sudo docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
     - name: Docker pull
-      run: sudo docker pull --platform=$PLATFORM teslamate:teslamate:$TESLAMATE_TAG
+      run: sudo docker pull --platform=$PLATFORM teslamate/teslamate:$TESLAMATE_TAG
     - name: Create docker image
       run: |
         DOCKER_CLI_EXPERIMENTAL=enabled sudo docker build \
@@ -68,5 +68,5 @@ jobs:
           --label io.hass.description="$ADDON_DESCRIPTION" \
           --label io.hass.version="$ADDON_VERSION" \
           --label io.hass.arch="${{ matrix.arch }}" \
-          -t mattffffff:teslamte-${{ matrix.arch }}:$ADDON_VERSION \
+          -t mattffffff/teslamte-${{ matrix.arch }}:$ADDON_VERSION \
           ./$GITHUB_WORKFLOW
