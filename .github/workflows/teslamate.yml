@@ -28,8 +28,10 @@ jobs:
         submodules: 'true'
     - name: Docker experimental
       run: |
+        TMPF=$(mktemp)
         if [ -f /etc/docker/daemon.json ]; then
-          sudo jq '. += { "experimental": true }' /etc/docker/daemon.json > /etc/docker/daemon.json
+          jq '. += { "experimental": true }' /etc/docker/daemon.json > $TMPF
+          sudo cp -f $TMPF /etc/docker/daemon.json
         else
           echo $'{\n    "experimental": true\n}' | sudo tee /etc/docker/daemon.json
         fi
