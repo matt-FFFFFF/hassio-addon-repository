@@ -26,14 +26,13 @@ jobs:
     - uses: actions/checkout@v2
       with:
         submodules: 'true'
-    - name: Docker experimental status
+    - name: Docker config
       run: |
-        docker version -f '{{.Server.Experimental}}'
+        if [ -f /etc/docker/daemon.json ]; cat /etc/docker/daemon.json; fi
     - name: Enable Docker daemon experimental status
       run: |
         echo $'{\n    "experimental": true\n}' | sudo tee /etc/docker/daemon.json
         sudo service docker restart
-        docker version -f '{{.Server.Experimental}'
     - name: Set PLATFORM variable
       run: |
         case "${{ matrix.arch }}" in
