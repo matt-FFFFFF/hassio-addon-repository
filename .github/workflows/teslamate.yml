@@ -28,7 +28,7 @@ jobs:
         submodules: 'true'
     - name: Docker config
       run: |
-        if [ -f /etc/docker/daemon.json ]; cat /etc/docker/daemon.json; fi
+        if [ -f /etc/docker/daemon.json ]; then cat /etc/docker/daemon.json; fi
     - name: Enable Docker daemon experimental status
       run: |
         echo $'{\n    "experimental": true\n}' | sudo tee /etc/docker/daemon.json
