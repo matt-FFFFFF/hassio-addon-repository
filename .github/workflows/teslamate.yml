@@ -58,10 +58,10 @@ jobs:
     - name: Login to docker hub
       run: sudo docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
     - name: Docker pull
-      run: docker pull --platform=$PLATFORM teslamate:teslamate:$TESLAMATE_TAG
+      run: sudo docker pull --platform=$PLATFORM teslamate:teslamate:$TESLAMATE_TAG
     - name: Create docker image
       run: |
-        DOCKER_CLI_EXPERIMENTAL=enabled docker build \
+        DOCKER_CLI_EXPERIMENTAL=enabled sudo docker build \
           --rm \
           --label io.hass.type="addon" \
           --label io.hass.name="$ADDON_NAME" \
