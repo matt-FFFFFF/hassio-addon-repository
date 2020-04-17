@@ -33,7 +33,7 @@ jobs:
       run: |
         echo $'{\n    "experimental": true\n}' | sudo tee /etc/docker/daemon.json
         sudo service docker restart
-        docker version -f '{{.Server.Experimental}
+        docker version -f '{{.Server.Experimental}'
     - name: Set PLATFORM variable
       run: |
         case "${{ matrix.arch }}" in
