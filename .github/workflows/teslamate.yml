@@ -63,6 +63,7 @@ jobs:
       run: |
         DOCKER_CLI_EXPERIMENTAL=enabled sudo docker build \
           --rm \
+          --build-arg TESLAMATE_TAG=$TESLAMATE_TAG
           --label io.hass.type="addon" \
           --label io.hass.name="$ADDON_NAME" \
           --label io.hass.description="$ADDON_DESCRIPTION" \

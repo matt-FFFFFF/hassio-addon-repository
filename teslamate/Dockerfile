@@ -1,4 +1,5 @@
-FROM teslamate/teslamate:$TESLAMATE_TAG
+ARG TESLAMATE_TAG
+FROM teslamate/teslamate:${TESLAMATE_TAG}
 
 USER nobody
 
