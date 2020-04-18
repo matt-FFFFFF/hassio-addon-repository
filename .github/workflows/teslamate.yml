@@ -28,12 +28,6 @@ jobs:
         submodules: 'true'
     - name: Docker version
       run: docker version
-    - name: Install buildx
-      run: |
-        export DOCKER_BUILDKIT=1
-        sudo  docker build --platform=local -o . git://github.com/docker/buildx
-        mkdir -p ~/.docker/cli-plugins
-        mv buildx ~/.docker/cli-plugins/docker-buildx
     - name: Docker experimental
       run: |
         TMPF=$(mktemp)
@@ -46,6 +40,12 @@ jobs:
         sudo mkdir $HOME/.docker
         echo $'{\n    "experimental": true\n}' | sudo -H tee $HOME/.docker/daemon.json
         sudo service docker restart
+    - name: Install buildx
+      run: |
+        export DOCKER_BUILDKIT=1
+        sudo  docker build --platform=local -o . git://github.com/docker/buildx
+        mkdir -p ~/.docker/cli-plugins
+        mv buildx ~/.docker/cli-plugins/docker-buildx
     - name: Set PLATFORM variable
       run: |
         case "${{ matrix.arch }}" in
