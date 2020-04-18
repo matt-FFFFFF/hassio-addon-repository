@@ -43,9 +43,11 @@ jobs:
         name: Set up Docker Buildx
     - name: Install buildx
       id: buildx
-      uses: crazy-max/ghaction-docker-buildx@v1
+      uses: crazy-max/ghaction-docker-buildx@v1.4.0
       with:
         version: latest
+    - name: Available platforms
+      run: echo ${{ steps.buildx.outputs.platforms }}
     - name: Set PLATFORM variable
       run: |
         case "${{ matrix.arch }}" in
