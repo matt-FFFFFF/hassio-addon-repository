@@ -40,7 +40,6 @@ jobs:
         sudo mkdir $HOME/.docker
         echo $'{\n    "experimental": true\n}' | sudo -H tee $HOME/.docker/daemon.json
         sudo service docker restart
-        name: Set up Docker Buildx
     - name: Install buildx
       id: buildx
       uses: crazy-max/ghaction-docker-buildx@v1.4.0
