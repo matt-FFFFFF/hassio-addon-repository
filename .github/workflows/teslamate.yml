@@ -57,6 +57,10 @@ jobs:
         echo ::set-env name=ADDON_DESCRIPTION::"$(jq -r .description < $GITHUB_WORKFLOW/config.json)"
     - name: Login to docker hub
       run: sudo docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+    - name: Install quemu-user
+      run: sudo apt-get install qemu-user -y
+    - name: Docker multiarch setup
+      run: sudo docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
     - name: Docker pull
       run: sudo docker pull --platform=$PLATFORM teslamate/teslamate:$TESLAMATE_TAG
     - name: Create docker image
@@ -69,5 +73,9 @@ jobs:
           --label io.hass.description="$ADDON_DESCRIPTION" \
           --label io.hass.version="$ADDON_VERSION" \
           --label io.hass.arch="${{ matrix.arch }}" \
-          -t mattffffff/teslamte-${{ matrix.arch }}:$ADDON_VERSION \
+          --label io.hass.url="https://github.com/matt-FFFFFF/hassio-addon-repository/blob/master/teslamate/README.md" \
+          -t ${{ secrets.DOCKER_USERNAME }}/teslamate-${{ matrix.arch }}:$ADDON_VERSION \
           ./$GITHUB_WORKFLOW
+    - name: Push to Docker Hub
+      run: docker push ${{ secrets.DOCKER_USERNAME }}/teslamate-${{ matrix.arch }}:$ADDON_VERSION
+      if: github.ref == 'refs/heads/master'
