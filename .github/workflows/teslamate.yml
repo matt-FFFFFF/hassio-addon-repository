@@ -62,7 +62,7 @@ jobs:
       run: DOCKER_CLI_EXPERIMENTAL=enabled sudo docker buildx create --use
     - name: Create docker image
       run: |
-        DOCKER_CLI_EXPERIMENTAL=enabled sudo docker buildx \
+        DOCKER_CLI_EXPERIMENTAL=enabled sudo docker buildx build \
           --pull \
           --platform=$PLATFORM \
           --build-arg TESLAMATE_TAG=$TESLAMATE_TAG \
