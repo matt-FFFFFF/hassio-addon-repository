@@ -40,12 +40,12 @@ jobs:
         sudo mkdir $HOME/.docker
         echo $'{\n    "experimental": true\n}' | sudo -H tee $HOME/.docker/daemon.json
         sudo service docker restart
+        name: Set up Docker Buildx
     - name: Install buildx
-      run: |
-        export DOCKER_BUILDKIT=1
-        sudo  docker build --platform=linux/amd64 -o . git://github.com/docker/buildx
-        mkdir -p ~/.docker/cli-plugins
-        mv buildx ~/.docker/cli-plugins/docker-buildx
+      id: buildx
+      uses: crazy-max/ghaction-docker-buildx@v1
+      with:
+        version: latest
     - name: Set PLATFORM variable
       run: |
         case "${{ matrix.arch }}" in
