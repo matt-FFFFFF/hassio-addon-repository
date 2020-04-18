@@ -28,23 +28,9 @@ jobs:
         submodules: 'true'
     - name: Docker version
       run: docker version
-    - name: Docker experimental
-      run: |
-        TMPF=$(mktemp)
-        if [ -f /etc/docker/daemon.json ]; then
-          jq '. += { "experimental": true }' /etc/docker/daemon.json > $TMPF
-          sudo cp -f $TMPF /etc/docker/daemon.json
-        else
-          echo $'{\n    "experimental": true\n}' | sudo tee /etc/docker/daemon.json
-        fi
-        sudo mkdir $HOME/.docker
-        echo $'{\n    "experimental": true\n}' | sudo -H tee $HOME/.docker/daemon.json
-        sudo service docker restart
     - name: Install buildx
       id: buildx
-      uses: crazy-max/ghaction-docker-buildx@v1
-      with:
-        version: latest
+      uses: crazy-max/ghaction-docker-buildx@v1.4.0
     - name: Available platforms
       run: echo ${{ steps.buildx.outputs.platforms }}
     - name: Set PLATFORM variable
