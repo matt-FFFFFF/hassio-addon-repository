@@ -51,6 +51,7 @@ jobs:
         else
           echo $'{\n    "experimental": true\n}' | sudo tee /etc/docker/daemon.json
         fi
+        sudo mkdir $HOME/.docker
         echo $'{\n    "experimental": true\n}' | sudo -H tee $HOME/.docker/daemon.json
         sudo service docker restart
     - name: Set PLATFORM variable
