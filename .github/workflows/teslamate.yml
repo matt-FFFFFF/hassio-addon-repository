@@ -60,13 +60,13 @@ jobs:
     - name: Install quemu-user
       run: sudo apt-get install qemu-user -y
     - name: Docker multiarch setup
-      run: DOCKER_CLI_EXPERIMENTAL=enabledsudo docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
-    - name: Docker pull
-      run: sudo docker pull --platform=$PLATFORM teslamate/teslamate:$TESLAMATE_TAG
+      run: DOCKER_CLI_EXPERIMENTAL=enabled sudo docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
     - name: Create docker image
       run: |
-        DOCKER_CLI_EXPERIMENTAL=enabled sudo docker build \
+        DOCKER_CLI_EXPERIMENTAL=enabled sudo docker buildx \
           --rm \
+          --pull \
+          --platform=$PLATFORM \
           --build-arg TESLAMATE_TAG=$TESLAMATE_TAG \
           --label io.hass.type="addon" \
           --label io.hass.name="$ADDON_NAME" \
