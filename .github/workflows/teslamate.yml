@@ -43,7 +43,7 @@ jobs:
     - name: Install buildx
       run: |
         export DOCKER_BUILDKIT=1
-        sudo  docker build --platform=local -o . git://github.com/docker/buildx
+        sudo  docker build --platform=linux/amd64 -o . git://github.com/docker/buildx
         mkdir -p ~/.docker/cli-plugins
         mv buildx ~/.docker/cli-plugins/docker-buildx
     - name: Set PLATFORM variable
