@@ -43,7 +43,7 @@ jobs:
           "aarch64" )
             echo "::set-env name=PLATFORM::linux/arm64" ;;
           "armhf" )
-            echo "::set-env name=PLATFORM::linux/arm64" ;;
+            echo "::set-env name=PLATFORM::linux/arm/v7" ;;
           "armv7" )
             echo "::set-env name=PLATFORM::linux/arm/v7" ;;
         esac
