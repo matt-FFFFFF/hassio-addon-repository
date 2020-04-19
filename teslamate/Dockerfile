@@ -13,7 +13,7 @@ RUN apk add --no-cache \
         tzdata \
         ca-certificates \
         curl \
-        bind-tools \
+        bind-tools
 
 COPY --chown=nobody ha-bootstrap.sh /
 RUN chmod a+x /*.sh
