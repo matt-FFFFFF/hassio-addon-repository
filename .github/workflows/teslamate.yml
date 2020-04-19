@@ -13,7 +13,7 @@ on:
 jobs:
   build:
     env:
-      TESLAMATE_TAG: 1.18.2
+      TESLAMATE_TAG: 1.19.0
 
     runs-on: ubuntu-latest
 
@@ -56,7 +56,7 @@ jobs:
       run: sudo docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
     - name: Install quemu-user
       run: sudo apt-get install qemu-user -y
-    - name: Create docker image
+    - name: Buildx build (if not master)
       run: |
         DOCKER_CLI_EXPERIMENTAL=enabled sudo docker buildx build \
           --pull \
@@ -70,6 +70,20 @@ jobs:
           --label io.hass.url="https://github.com/matt-FFFFFF/hassio-addon-repository/blob/master/teslamate/README.md" \
           -t ${{ secrets.DOCKER_USERNAME }}/teslamate-${{ matrix.arch }}:$ADDON_VERSION \
           ./$GITHUB_WORKFLOW
-    - name: Push to Docker Hub
-      run: docker push ${{ secrets.DOCKER_USERNAME }}/teslamate-${{ matrix.arch }}:$ADDON_VERSION
+      if: github.ref != 'refs/head/master'
+    - name: Buildx build --push (if master)
+      run: |
+        DOCKER_CLI_EXPERIMENTAL=enabled sudo docker buildx build \
+          --pull \
+          --push \
+          --platform=$PLATFORM \
+          --build-arg TESLAMATE_TAG=$TESLAMATE_TAG \
+          --label io.hass.type="addon" \
+          --label io.hass.name="$ADDON_NAME" \
+          --label io.hass.description="$ADDON_DESCRIPTION" \
+          --label io.hass.version="$ADDON_VERSION" \
+          --label io.hass.arch="${{ matrix.arch }}" \
+          --label io.hass.url="https://github.com/matt-FFFFFF/hassio-addon-repository/blob/master/teslamate/README.md" \
+          -t ${{ secrets.DOCKER_USERNAME }}/teslamate-${{ matrix.arch }}:$ADDON_VERSION \
+          ./$GITHUB_WORKFLOW
       if: github.ref == 'refs/heads/master'

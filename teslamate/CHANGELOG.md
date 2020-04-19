@@ -1,8 +1,9 @@
 # Changelog
 
-## 0.0.7
+## 0.1.0
 
-* Disable Web UI link
-* Disable ingress support
+* Teslamate 1.19.0
+* Implement docker buildx
+* Use original Teslamate image as base
 
 [Full Changelog](https://github.com/matt-FFFFFF/hassio-addon-repository/blob/master/teslamate/CHANGELOG.md)
