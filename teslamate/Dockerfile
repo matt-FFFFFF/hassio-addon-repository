@@ -1,48 +1,35 @@
-ARG BUILD_FROM
-FROM elixir:1.10-alpine AS builder
+ARG TESLAMATE_TAG
+FROM teslamate/teslamate:${TESLAMATE_TAG}
 
-RUN apk add --update --no-cache nodejs npm git build-base && \
-    mix local.rebar --force && \
-    mix local.hex --force
+ARG BASHIO_VERSION=0.9.0
+ARG S6_OVERLAY_VERSION=1.22.1.0
 
-ENV MIX_ENV=prod
+USER root
 
-WORKDIR /opt/app
+# Install bashio - from https://github.com/home-assistant/docker-base/blob/master/alpine/amd64/Dockerfile
+RUN apk add --no-cache \
+        bash \
+        jq \
+        tzdata \
+        ca-certificates \
+        curl \
+        bind-tools \
+        \
+    && curl -L -s "https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-amd64.tar.gz" \
+        | tar zxvf - -C / \
+    && mkdir -p /etc/fix-attrs.d \
+    && mkdir -p /etc/services.d \
+    \
+    && mkdir -p /tmp/bashio \
+    && curl -L -s https://github.com/hassio-addons/bashio/archive/v${BASHIO_VERSION}.tar.gz | tar -xzf - --strip 1 -C /tmp/bashio \
+    && mv /tmp/bashio/lib /usr/lib/bashio \
+    && ln -s /usr/lib/bashio/bashio /usr/bin/bashio \
+    && rm -rf /tmp/bashio
 
-COPY teslamate-source/mix.exs teslamate-source/mix.lock ./
-RUN mix "do" deps.get --only $MIX_ENV, deps.compile
-
-COPY teslamate-source/assets assets
-RUN npm ci --prefix ./assets && npm run deploy --prefix ./assets
-
-COPY teslamate-source/config config
-COPY teslamate-source/lib lib
-COPY teslamate-source/priv priv
-COPY teslamate-source/grafana/dashboards grafana/dashboards
-
-RUN mix "do" phx.digest, compile
-
-RUN mkdir -p /opt/built && mix release --path /opt/built
-
-########################################################################
-
-FROM $BUILD_FROM as app
-
-ENV LANG=C.UTF-8 \
-    SRTM_CACHE=/opt/app/.srtm_cache \
-    HOME=/opt/app
-
-RUN apk add --update --no-cache bash openssl tzdata
-
-WORKDIR $HOME
-RUN chown -R nobody: .
-USER nobody
-
-COPY --chown=nobody teslamate-source/entrypoint.sh ha-bootstrap.sh /
-COPY --from=builder --chown=nobody /opt/built .
-RUN mkdir .srtm_cache
-
+COPY --chown=nobody ha-bootstrap.sh /
 RUN chmod a+x /*.sh
+
+USER nobody
 
 ENTRYPOINT ["/ha-bootstrap.sh"]
 CMD ["bin/teslamate", "start"]
