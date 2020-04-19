@@ -13,8 +13,12 @@ RUN apk add --no-cache \
         tzdata \
         ca-certificates \
         curl \
-        bind-tools
-
+        bind-tools \
+        \
+    && curl -L -s "https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-amd64.tar.gz" \
+        | tar zxvf - -C / \
+    && mkdir -p /etc/fix-attrs.d \
+    && mkdir -p /etc/services.d
 COPY --chown=nobody ha-bootstrap.sh /
 RUN chmod a+x /*.sh
 
