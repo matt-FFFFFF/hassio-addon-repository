@@ -1,7 +1,7 @@
 ARG TESLAMATE_TAG
 FROM teslamate/teslamate:${TESLAMATE_TAG}
 
-USER nobody
+USER root
 
 ARG BASHIO_VERSION=0.9.0
 ARG S6_OVERLAY_VERSION=1.22.1.0
@@ -17,6 +17,8 @@ RUN apk add --no-cache \
 
 COPY --chown=nobody ha-bootstrap.sh /
 RUN chmod a+x /*.sh
+
+USER nobody
 
 ENTRYPOINT ["/ha-bootstrap.sh"]
 CMD ["bin/teslamate", "start"]
