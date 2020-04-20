@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - teslamate-dev
     paths:
       - 'teslamate/**'
       - '!**.md'
@@ -25,15 +26,64 @@ jobs:
     - uses: actions/checkout@v2
       with:
         submodules: 'true'
+    - name: Docker version
+      run: docker version
+    - name: Install buildx
+      id: buildx
+      uses: crazy-max/ghaction-docker-buildx@v1.4.0
+    - name: Available platforms
+      run: echo ${{ steps.buildx.outputs.platforms }}
+    - name: Set PLATFORM variable
+      run: |
+        case "${{ matrix.arch }}" in
+          "amd64" )
+            echo "::set-env name=PLATFORM::linux/amd64" ;;
+          "i386" )
+            echo "::set-env name=PLATFORM::linux/386" ;;
+          "aarch64" )
+            echo "::set-env name=PLATFORM::linux/arm64" ;;
+          "armhf" )
+            echo "::set-env name=PLATFORM::linux/arm/v7" ;;
+          "armv7" )
+            echo "::set-env name=PLATFORM::linux/arm/v7" ;;
+        esac
+    - name: Set environment variables from config.json
+      run: |
+        echo ::set-env name=ADDON_VERSION::"$(jq -r .version < $GITHUB_WORKFLOW/config.json)"
+        echo ::set-env name=ADDON_NAME::"$(jq -r .name < $GITHUB_WORKFLOW/config.json)"
+        echo ::set-env name=ADDON_DESCRIPTION::"$(jq -r .description < $GITHUB_WORKFLOW/config.json)"
     - name: Login to docker hub
       run: sudo docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-    - name: Create docker image
+    - name: Install quemu-user
+      run: sudo apt-get install qemu-user -y
+    - name: Buildx build (if not master)
       run: |
-        sudo docker run \
-              --rm \
-              --privileged \
-              -v /run/docker.sock:/run/docker.sock:rw \
-              -v ~/.docker:/root/.docker \
-              -v $(pwd)/$GITHUB_WORKFLOW:/data homeassistant/amd64-builder \
-              --${{ matrix.arch }} \
-              --target /data
+        DOCKER_CLI_EXPERIMENTAL=enabled sudo docker buildx build \
+          --pull \
+          --platform=$PLATFORM \
+          --build-arg TESLAMATE_TAG=$TESLAMATE_TAG \
+          --label io.hass.type="addon" \
+          --label io.hass.name="$ADDON_NAME" \
+          --label io.hass.description="$ADDON_DESCRIPTION" \
+          --label io.hass.version="$ADDON_VERSION" \
+          --label io.hass.arch="${{ matrix.arch }}" \
+          --label io.hass.url="https://github.com/matt-FFFFFF/hassio-addon-repository/blob/master/teslamate/README.md" \
+          -t ${{ secrets.DOCKER_USERNAME }}/teslamate-${{ matrix.arch }}:$ADDON_VERSION \
+          ./$GITHUB_WORKFLOW
+      if: github.ref != 'refs/head/master'
+    - name: Buildx build --push (if master)
+      run: |
+        DOCKER_CLI_EXPERIMENTAL=enabled sudo docker buildx build \
+          --pull \
+          --push \
+          --platform=$PLATFORM \
+          --build-arg TESLAMATE_TAG=$TESLAMATE_TAG \
+          --label io.hass.type="addon" \
+          --label io.hass.name="$ADDON_NAME" \
+          --label io.hass.description="$ADDON_DESCRIPTION" \
+          --label io.hass.version="$ADDON_VERSION" \
+          --label io.hass.arch="${{ matrix.arch }}" \
+          --label io.hass.url="https://github.com/matt-FFFFFF/hassio-addon-repository/blob/master/teslamate/README.md" \
+          -t ${{ secrets.DOCKER_USERNAME }}/teslamate-${{ matrix.arch }}:$ADDON_VERSION \
+          ./$GITHUB_WORKFLOW
+      if: github.ref == 'refs/heads/master'
