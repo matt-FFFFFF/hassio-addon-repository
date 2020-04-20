@@ -1,8 +1,10 @@
 # Changelog
 
-## 0.0.7
+## 0.1.1
 
-* Disable Web UI link
-* Disable ingress support
+* Teslamate [1.19.1](https://github.com/adriankumpf/teslamate/releases/tag/v1.19.1)
+* Implement docker buildx
+* Proper Raspberry Pi/ARM support (armv7 and arm64/aarch64)
+* Use original Teslamate image as base
 
 [Full Changelog](https://github.com/matt-FFFFFF/hassio-addon-repository/blob/master/teslamate/CHANGELOG.md)

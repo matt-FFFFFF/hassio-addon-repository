@@ -12,7 +12,7 @@ on:
 jobs:
   build:
     env:
-      TESLAMATE_TAG: v1.18.2
+      TESLAMATE_TAG: 1.19.1
 
     runs-on: ubuntu-latest
 
