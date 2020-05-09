@@ -2,8 +2,9 @@
 
 ## 0.2.0
 
-* Automatically deploy Grafana dashbaords (if configured)
+* 🎉🎉🎉 Automatically deploy Grafana dashbaords 🎉🎉🎉 (if configured)
 * Teslamate 1.19.3
+* Drop support for i386
 
 ## 0.1.1
 

@@ -19,7 +19,7 @@ jobs:
 
     strategy:
       matrix:
-        arch: [amd64, armhf, armv7, aarch64, i386]
+        arch: [amd64, armhf, armv7, aarch64]
       fail-fast: true
 
     steps:
