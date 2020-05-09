@@ -1,4 +1,9 @@
 ARG TESLAMATE_TAG
+
+FROM teslamate/grafana:${TESLAMATE_TAG} as grafana
+
+#---
+
 FROM teslamate/teslamate:${TESLAMATE_TAG}
 
 ARG BASHIO_VERSION=0.9.0
@@ -26,8 +31,11 @@ RUN apk add --no-cache \
     && ln -s /usr/lib/bashio/bashio /usr/bin/bashio \
     && rm -rf /tmp/bashio
 
-COPY --chown=nobody ha-bootstrap.sh /
+COPY --chown=nobody scripts/*.sh /
 RUN chmod a+x /*.sh
+
+COPY --from=grafana --chown=nobody /dashboards /dashboards
+COPY --from=grafana --chown=nobody /dashboards_internal /dashboards
 
 USER nobody
 

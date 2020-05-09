@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.0
+
+* Automatically deploy Grafana dashbaords (if configured)
+* Teslamate 1.19.3
+
 ## 0.1.1
 
 * Teslamate [1.19.1](https://github.com/adriankumpf/teslamate/releases/tag/v1.19.1)
