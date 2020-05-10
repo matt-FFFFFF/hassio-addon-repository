@@ -13,13 +13,13 @@ on:
 jobs:
   build:
     env:
-      TESLAMATE_TAG: 1.19.1
+      TESLAMATE_TAG: 1.19.3
 
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        arch: [amd64, armhf, armv7, aarch64, i386]
+        arch: [amd64, armhf, armv7, aarch64]
       fail-fast: true
 
     steps:

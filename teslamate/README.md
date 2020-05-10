@@ -14,38 +14,37 @@ See https://github.com/adriankumpf/teslamate/issues/494.
 This means we cannot implement Ingress and must expose TeslaMate to the network.
 I recommend you only do this to configure TeslaMate and you then remove the external port mapping.
 
-## Uploading Grafana Dashboards
+## Grafana Configuration
 
-*I recommend you use the existing Grafana addon from the community addons*
+> I recommend you use the existing Grafana addon from the community addons
 
-This must be done manually for now. You must use a bash terminal and have ```curl``` available.
+**NEW - Automatic dashboard uploading!**
 
-- Use the Grafana addon from the community repository.
+### Data Source
 
-- Expose the Grafana UI on an external port and restart it
+Configure a PostgreSQL data source as follows:
 
-- Making  note of the admin username and password (see the addon container logs), clone the [teslamate repo](https://github.com/adriankumpf/teslamate)
+![Grafana Postgres data source](media/grafana-postgres.png)
 
-```bash
-git clone https://github.com/adriankumpf/teslamate.git
+### Uploading Dashboards
+
+Configure the **Grafana** addon and set the admin username and password:
+
+```yml
+env_vars:
+  - name: GF_SECURITY_ADMIN_USER
+    value: admin
+  - name: GF_SECURITY_ADMIN_PASSWORD
+    value: mysecretpassword
 ```
 
-- Open a terminal and navigate to the ./grafana directory
+Now configure the **Teslamate** addon:
 
-- Edit the ```dashboards.sh``` file and change the URL, LOGIN and DASHBOARDS_DIRECTORY to reflect your installation.
-
-e.g.
-
-```bash
-readonly URL=${URL:-"http://my-homeassistant-host:3000"}
-readonly LOGIN=${LOGIN:-"admin:mysecretpassword"}
-readonly DASHBOARDS_DIRECTORY=${DASHBOARDS_DIRECTORY:-"./dashboards"}
+```yaml
+grafana_import_dashboards: true
+grafana_folder_name: "TeslaMate"
+grafana_host: "a0d7b954-grafana" # this is correct if you use the community addon
+grafana_port: 3000               # this is correct if you use the community addon
+grafana_user: "admin"
+grafana_pass: "pass"
 ```
-
-- Run the dashboards script
-
-```bash
-./dashboards.sh
-```
-
-- Finally remove the port mapping from Grafana and restart the addon

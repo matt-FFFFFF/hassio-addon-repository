@@ -1,10 +1,9 @@
 # Changelog
 
-## 0.1.1
+## 0.2.0
 
-* Teslamate [1.19.1](https://github.com/adriankumpf/teslamate/releases/tag/v1.19.1)
-* Implement docker buildx
-* Proper Raspberry Pi/ARM support (armv7 and arm64/aarch64)
-* Use original Teslamate image as base
+* Automatically deploy Grafana dashbaords (if configured)
+* Teslamate 1.19.3
+
 
 [Full Changelog](https://github.com/matt-FFFFFF/hassio-addon-repository/blob/master/teslamate/CHANGELOG.md)
