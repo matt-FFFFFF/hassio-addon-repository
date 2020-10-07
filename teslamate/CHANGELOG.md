@@ -1,9 +1,7 @@
 # Changelog
 
-## 0.2.0
+## 0.3.0
 
-* Automatically deploy Grafana dashbaords (if configured)
-* Teslamate 1.19.3
-
+* Teslamate 1.20.0s
 
 [Full Changelog](https://github.com/matt-FFFFFF/hassio-addon-repository/blob/master/teslamate/CHANGELOG.md)

@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.0
+
+* Teslamate 1.20.0s
+
 ## 0.2.0
 
 * 🎉🎉🎉 Automatically deploy Grafana dashbaords 🎉🎉🎉 (if configured)
