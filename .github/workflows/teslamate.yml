@@ -29,7 +29,7 @@ jobs:
       run: docker version
     - name: Setup qemu
       id: qemu
-      uses: docker/setup-qemu@v1
+      uses: docker/setup-qemu-action@v1
       with:
         platfoms: all
     - name: Install buildx
@@ -60,8 +60,6 @@ jobs:
         echo ::set-env name=ADDON_DESCRIPTION::"$(jq -r .description < $GITHUB_WORKFLOW/config.json)"
     - name: Login to docker hub
       run: sudo docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-#    - name: Install quemu-user
-#      run: sudo apt-get install qemu-user -y
     - name: Buildx build (if not master)
       run: |
         DOCKER_CLI_EXPERIMENTAL=enabled sudo docker buildx build \
