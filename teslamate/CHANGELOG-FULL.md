@@ -1,8 +1,14 @@
 # Changelog
 
+## 0.4.0
+
+* Teslamate 1.20.1
+* Run as root <https://github.com/matt-FFFFFF/hassio-addon-repository/issues/8>
+
+
 ## 0.3.0
 
-* Teslamate 1.20.0s
+* Teslamate 1.20.0
 
 ## 0.2.0
 
