@@ -31,13 +31,13 @@ RUN apk add --no-cache \
     && ln -s /usr/lib/bashio/bashio /usr/bin/bashio \
     && rm -rf /tmp/bashio
 
-COPY --chown=nobody scripts/*.sh /
+COPY --chown=root scripts/*.sh /
 RUN chmod a+x /*.sh
 
-COPY --from=grafana --chown=nobody /dashboards /dashboards
-COPY --from=grafana --chown=nobody /dashboards_internal /dashboards
+COPY --from=grafana --chown=root /dashboards /dashboards
+COPY --from=grafana --chown=root /dashboards_internal /dashboards
 
-USER nobody
+# USER nobody
 
 ENTRYPOINT ["/ha-bootstrap.sh"]
 CMD ["bin/teslamate", "start"]
