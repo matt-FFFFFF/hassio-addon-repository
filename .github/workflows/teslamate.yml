@@ -3,8 +3,7 @@ name: teslamate
 on:
   push:
     branches:
-      - master
-      - teslamate-dev
+      - '**'
     paths:
       - 'teslamate/**'
       - '!**.md'
