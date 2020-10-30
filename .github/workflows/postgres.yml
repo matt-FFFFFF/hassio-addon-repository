@@ -3,7 +3,7 @@ name: postgres
 on:
   push:
     branches:
-      - master
+      - main
     paths:
       - 'postgres/**'
       - '!**.md'

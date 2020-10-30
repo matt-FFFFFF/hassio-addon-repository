@@ -60,7 +60,7 @@ jobs:
         echo "ADDON_DESCRIPTION=$(jq -r .description < $GITHUB_WORKFLOW/config.json)" >> $GITHUB_ENV
     - name: Login to docker hub
       run: sudo docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-    - name: Buildx build (if not master)
+    - name: Buildx build (if not main)
       run: |
         DOCKER_CLI_EXPERIMENTAL=enabled sudo docker buildx build \
           --pull \
@@ -71,11 +71,11 @@ jobs:
           --label io.hass.description="$ADDON_DESCRIPTION" \
           --label io.hass.version="$ADDON_VERSION" \
           --label io.hass.arch="${{ matrix.arch }}" \
-          --label io.hass.url="https://github.com/matt-FFFFFF/hassio-addon-repository/blob/master/teslamate/README.md" \
+          --label io.hass.url="https://github.com/matt-FFFFFF/hassio-addon-repository/blob/main/teslamate/README.md" \
           -t ${{ secrets.DOCKER_USERNAME }}/teslamate-${{ matrix.arch }}:$ADDON_VERSION \
           ./$GITHUB_WORKFLOW
-      if: github.ref != 'refs/heads/master'
-    - name: Buildx build --push (if master)
+      if: github.ref != 'refs/heads/main'
+    - name: Buildx build --push (if main)
       run: |
         DOCKER_CLI_EXPERIMENTAL=enabled sudo docker buildx build \
           --pull \
@@ -87,7 +87,7 @@ jobs:
           --label io.hass.description="$ADDON_DESCRIPTION" \
           --label io.hass.version="$ADDON_VERSION" \
           --label io.hass.arch="${{ matrix.arch }}" \
-          --label io.hass.url="https://github.com/matt-FFFFFF/hassio-addon-repository/blob/master/teslamate/README.md" \
+          --label io.hass.url="https://github.com/matt-FFFFFF/hassio-addon-repository/blob/main/teslamate/README.md" \
           -t ${{ secrets.DOCKER_USERNAME }}/teslamate-${{ matrix.arch }}:$ADDON_VERSION \
           ./$GITHUB_WORKFLOW
-      if: github.ref == 'refs/heads/master'
+      if: github.ref == 'refs/heads/main'
