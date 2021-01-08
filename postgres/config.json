@@ -28,5 +28,6 @@
     "password": "str",
     "database": "str"
   },
-  "url": "https://github.com/matt-FFFFFF/hassio-addon-postgres/blob/main/postgres/README.md"
+  "url": "https://github.com/matt-FFFFFF/hassio-addon-postgres/blob/main/postgres/README.md",
+  "image": "mattffffff/postgres-{arch}"
 }
