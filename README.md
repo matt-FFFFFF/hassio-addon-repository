@@ -8,3 +8,7 @@ Some of my addons for Home Assistant.
 ## Adding to Home Assistant
 
 Use the following URL: ```https://github.com/matt-FFFFFF/hassio-addon-repository```
+
+## Issues and PRs
+
+Please raise addon specific issues on the respective repos linked above, not this one.
