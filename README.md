@@ -3,11 +3,7 @@
 Some of my addons for Home Assistant.
 
 * [Postgres](postgres)
-* [TeslaMate](teslamate)
-
-## CI/CD
-
-I use GitHub Actions for CI/CD, see the [workflows](.github/workflows) directory.
+* [TeslaMate](matt-FFFFFF/hassio-addon-teslamate)
 
 ## Adding to Home Assistant
 
