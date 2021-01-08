@@ -2,7 +2,7 @@
 
 Some of my addons for Home Assistant.
 
-* [Postgres](postgres)
+* [Postgres](matt-FFFFFF/hassio-addon-postgres)
 * [TeslaMate](matt-FFFFFF/hassio-addon-teslamate)
 
 ## Adding to Home Assistant
