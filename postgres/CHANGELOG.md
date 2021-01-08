@@ -1,7 +1,7 @@
 # Changelog
 
-## 0.0.3
+## 0.1.0
 
-* Implement exec in bootstrap
+* Postgres 12.5
 
-[Full Changelog](https://github.com/matt-FFFFFF/hassio-addon-postgres/blob/main/CHANGELOG-FULL.md)
+[Full Changelog](https://github.com/matt-FFFFFF/hassio-addon-teslamate/blob/main/CHANGELOG-FULL.md)

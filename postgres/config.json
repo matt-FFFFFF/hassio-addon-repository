@@ -1,28 +1,32 @@
 {
-    "name": "PostgreSQL",
-    "version": "0.0.3",
-    "slug": "postgres",
-    "description": "PostgreSQL an object-relational database management system (ORDBMS) with an emphasis on extensibility and standards-compliance.",
-    "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
-    "startup": "system",
-    "boot": "auto",
-    "timeout": 60,
-    "ports": {
-        "5432/tcp": null
-    },
-    "ports_description": {
-        "5432/tcp": "PostgreSQL database port, expose this if you need to access outside of Home Assistant"
-    },
-    "options": {
-        "user": "username",
-        "password": "password",
-        "database": "databasename"
-    },
-    "schema": {
-        "user": "str",
-        "password": "str",
-        "database": "str"
-    },
-    "url": "https://github.com/matt-FFFFFF/hassio-addon-repository/blob/master/postgres/README.md",
-    "image": "mattffffff/postgres-{arch}"
-  }
+  "name": "PostgreSQL",
+  "version": "0.1.0",
+  "slug": "postgres",
+  "description": "PostgreSQL an object-relational database management system (ORDBMS) with an emphasis on extensibility and standards-compliance.",
+  "arch": [
+    "armhf",
+    "armv7",
+    "aarch64",
+    "amd64"
+  ],
+  "startup": "system",
+  "boot": "auto",
+  "timeout": 60,
+  "ports": {
+    "5432/tcp": null
+  },
+  "ports_description": {
+    "5432/tcp": "PostgreSQL database port, expose this if you need to access outside of Home Assistant"
+  },
+  "options": {
+    "user": "username",
+    "password": "password",
+    "database": "databasename"
+  },
+  "schema": {
+    "user": "str",
+    "password": "str",
+    "database": "str"
+  },
+  "url": "https://github.com/matt-FFFFFF/hassio-addon-postgres/blob/main/postgres/README.md"
+}

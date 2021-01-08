@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.0
+
+* Postgres 12.5
+
 ## 0.0.3
 
 * Implement exec in bootstrap
