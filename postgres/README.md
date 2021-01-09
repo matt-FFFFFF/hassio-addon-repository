@@ -2,6 +2,8 @@
 
 PostgreSQL is a powerful, open source object-relational database system with over 30 years of active development that has earned it a strong reputation for reliability, feature robustness, and performance.
 
+This addon is part of [my Home Assistant addon repo](https://github.com/matt-FFFFFF/hassio-addon-repository) - see link for instructions on how to add to Home Assistant.
+
 ## Version
 
 This addon uses version 12.5 of PostgreSQL.
