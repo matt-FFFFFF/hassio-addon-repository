@@ -25,9 +25,10 @@ database_port: 5432
 
 ### MQTT Configuration
 
-You **must** have a username and password defined for your MQTT user, do not use the HA local login (thanks [quach128](https://github.com/quach128)). Below is a sample configuration using the Mosquitto MQTT addon agailable in the Home Assistant core addon repo:
+You **must** have a username and password defined for your MQTT user, do not use the HA local login (thanks [quach128](https://github.com/quach128)). Below is a sample configuration using the Mosquitto MQTT addon available in the Home Assistant core addon repo:
 
 ```yaml
+disable_mqtt: false
 mqtt_host: core-mosquitto
 mqtt_user: mymqttuser
 mqtt_pass: mymqtttpass
@@ -78,5 +79,5 @@ grafana_folder_name: TeslaMate
 grafana_host: a0d7b954-grafana   # this is correct if you use the community addon
 grafana_port: 3000               # this is correct if you use the community addon
 grafana_user: admin
-grafana_pass: pass
+grafana_pass: mysecretpassword
 ```
