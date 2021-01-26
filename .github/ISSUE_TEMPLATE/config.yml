@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: TeslaMate Addon Repo
+    url: https://github.com/matt-FFFFFF/hassio-addon-teslamate
+    about: Please raise issues/discusions on TeslaMate here
+  - name: Postgres Addon Repo
+    url: https://github.com/matt-FFFFFF/hassio-addon-postgres
+    about: Please raise issues/discusions on Postgres here
