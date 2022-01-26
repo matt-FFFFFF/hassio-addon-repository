@@ -12,12 +12,12 @@ This image uses the Home Assistant base image, rather than the native Alpine ima
 
 ## Configuration
 
-Set the database name, username and password  in the yaml editor:
+Set the database name, username and password in the `Configuration` tab of the addon before starting it for the first time:
 
 ```yml
-username: mydbuser
-password: mysecretpassword
-database: mydbname
+username: username
+password: password
+database: databasename
 ```
 
 ## Connecting to the DB
