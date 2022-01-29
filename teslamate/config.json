@@ -1,6 +1,6 @@
 {
   "name": "TeslaMate",
-  "version": "0.17.0",
+  "version": "0.17.1",
   "slug": "teslamate",
   "description": "A self-hosted data logger for your Tesla.",
   "arch": [
