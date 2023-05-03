@@ -7,7 +7,7 @@ To get the addon to run locally, make these changes but do not commit them to an
 ```json
 {
     "args": {
-      "TESLAMATE_TAG": "1.21.2",
+      "TESLAMATE_TAG": "1.27.2",
       "ARCH": "amd64"
     }
 }
