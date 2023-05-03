@@ -1,4 +1,4 @@
-blank_issues_enabled: true
+blank_issues_enabled: false
 contact_links:
   - name: TeslaMate
     url: https://github.com/matt-FFFFFF/hassio-addon-teslamate
