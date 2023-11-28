@@ -1,6 +1,6 @@
 {
   "name": "TeslaMate",
-  "version": "0.20.1",
+  "version": "0.21.0",
   "slug": "teslamate",
   "description": "A self-hosted data logger for your Tesla.",
   "arch": [
@@ -21,6 +21,7 @@
     "database_host": "29b65938-postgres",
     "database_ssl": false,
     "database_port": 5432,
+    "default_geofence": "",
     "disable_mqtt": false,
     "encryption_key": "myencryptionkey",
     "grafana_import_dashboards": false,
@@ -45,6 +46,7 @@
     "database_host": "str",
     "database_ssl": "bool",
     "database_port": "int",
+    "default_geofence": "str",
     "disable_mqtt": "bool",
     "encryption_key": "password",
     "grafana_import_dashboards": "bool",
