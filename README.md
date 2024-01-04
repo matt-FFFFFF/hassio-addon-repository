@@ -1,5 +1,7 @@
 # My Addon Repo
 
+🔔 note this project is looking for a new maintainer: https://github.com/matt-FFFFFF/hassio-addon-teslamate/issues/124
+
 Some of my addons for Home Assistant.
 
 * [Postgres](https://github.com/matt-FFFFFF/hassio-addon-postgres)
