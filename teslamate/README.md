@@ -1,5 +1,7 @@
 # TeslaMate Addon for Home Assistant
 
+🔔 Note this project is looking for a new maintainer: https://github.com/matt-FFFFFF/hassio-addon-teslamate/issues/124
+
 This addon builds on the excellent work of [Adrian Kumpf](https://github.com/adriankumpf/teslamate). See his repo for information regarding the TeslaMate application.
 
 This addon is part of [my Home Assistant addon repo](https://github.com/matt-FFFFFF/hassio-addon-repository) - see link for instructions on how to add to Home Assistant.
@@ -61,14 +63,14 @@ I recommend you use the existing Grafana addon from the community addons, if you
 
 ```yaml
 plugins:
-  - name: natel-discrete-panel
-  - name: natel-plotly-panel
-  - name: pr0ps-trackmap-panel
-  - name: grafana-piechart-panel
+  - natel-discrete-panel
+  - natel-plotly-panel
+  - pr0ps-trackmap-panel
+  - grafana-piechart-panel
 custom_plugins:
   - name: panodata-map-panel
     url: https://github.com/panodata/panodata-map-panel/releases/download/0.16.0/panodata-map-panel-0.16.0.zip
-    signed: false
+    unsigned: true
 custom_plugins: []
 env_vars:
   - name: GF_SECURITY_ADMIN_USER
